@@ -42,7 +42,6 @@ class AuthController extends Controller
         }
     }
 
-
     public function register(Request $request) {
 
         // Validation
@@ -72,5 +71,13 @@ class AuthController extends Controller
                 'message' => $e->getMessage()
             ],  Response::HTTP_BAD_REQUEST);
         }
+    }
+
+    public function logout(Request $request) {
+
+        Auth::logout();
+        return Response([
+            'message' => 'You have logged out!'
+        ]);
     }
 }
