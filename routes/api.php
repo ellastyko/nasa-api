@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    AuthController
+    AuthController,
+    CompanyController
 };
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,17 @@ use App\Http\Controllers\{
 */
 
 Route::group([
-    ['middleware' => 'api', 'only' => ['logout']],
     'prefix' => 'auth'
 ], function() {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 });
 
+Route::group([
+    'middleware' => 'auth',
+    'prefix' => 'companies'
+], function() {
+    Route::get('/', [CompanyController::class, 'index']);
+    Route::post('/', [CompanyController::class, 'store']);
+});
