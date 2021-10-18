@@ -21,11 +21,11 @@ Route::group([
 ], function() {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
+    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 });
 
 Route::group([
-    'middleware' => 'auth',
+    'middleware' => 'auth:sanctum',
     'prefix' => 'companies'
 ], function() {
     Route::get('/', [CompanyController::class, 'index']);

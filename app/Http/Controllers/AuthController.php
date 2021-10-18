@@ -25,7 +25,7 @@ class AuthController extends Controller
             }
             $user = User::find(auth()->user()->id);
 
-            $token = $user->createToken('token')->plainTextToken;
+            $token = $user->createToken('remember_token')->plainTextToken;
 
             $user->update(['remember_token' => $token]);
 
@@ -75,6 +75,7 @@ class AuthController extends Controller
 
     public function logout(Request $request) {
 
+        
         Auth::logout();
         return Response([
             'message' => 'You have logged out!'

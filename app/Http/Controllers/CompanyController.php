@@ -16,6 +16,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
+        return auth()->user();
         return Company::all();
     }
 
