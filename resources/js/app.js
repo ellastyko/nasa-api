@@ -29,14 +29,14 @@ import Vue from "vue";
 
 import MainComponent from "./components/MainComponent";
 
-// import store from './store/index'
-// import { BootstrapVue } from 'bootstrap-vue'
-//
-// Vue.use(BootstrapVue)
+import store from './store/index'
+import { BootstrapVue } from 'bootstrap-vue'
+
+Vue.use(BootstrapVue)
 
 const app = new Vue({
     el: '#app',
-    // store,
+    store,
     components: {
         'main-component' : MainComponent
     }
