@@ -66,7 +66,7 @@
     import { mapActions, mapGetters, mapMutations } from 'vuex'
 
     export default {
-
+        name: 'main-component',
         components: {
             Multiselect,
         },
