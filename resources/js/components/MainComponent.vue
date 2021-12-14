@@ -18,10 +18,10 @@
             </div>
 
             <select class="form-select mt-4"
-                    @change="changeAmmount"
+                    @change="changeAmount"
                     aria-label="Default select example"
-                    v-model="ammount">
-                <option selected disabled>Choose ammount of events</option>
+                    v-model="amount">
+                <option selected disabled>Choose amount of events</option>
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="20">20</option>
@@ -41,8 +41,7 @@
                     <th scope="row">{{ event.title }}</th>
                     <td>{{ event.date | parseDate }}</td>
                     <td>
-                        <a target="_blank"
-                           :href="'https://www.google.com/maps/search/?api=1&query=' + event.lat + ',' + event.lng">Go by link</a>
+                        <a target="_blank" :href="event.lat | parseLink(event.long)">Go by link</a>
                     </td>
                 </tr>
             </tbody>
@@ -52,7 +51,7 @@
             @change="pagination"
             class="d-flex"
             v-model="currentPage"
-            :per-page="ammount"
+            :per-page="amount"
             :total-rows="getEventsCount"
             prev-text="Prev"
             next-text="Next"
@@ -76,12 +75,15 @@
 
             this.loadEvents({
                 current: this.currentPage,
-                limit: this.ammount
+                limit: this.amount
             })
         },
         filters: {
             parseDate: time => {
                 return new Date(time).toLocaleDateString('en-GB')
+            },
+            parseLink: function (lat, long) {
+                return 'https://www.google.com/maps/search/?api=1&query=' + lat + ',' + long
             }
         },
         computed: {
@@ -90,7 +92,7 @@
         data() {
             return {
                 currentPage: 1,
-                ammount: 10,
+                amount: 10,
                 selected_categories: null,
             }
         },
@@ -99,11 +101,11 @@
 
             ...mapActions(['loadCategories', 'loadEvents']),
 
-            changeAmmount() {
+            changeAmount() {
 
                 this.loadEvents({
                     current: this.currentPage,
-                    limit: this.ammount,
+                    limit: this.amount,
                     categories: this.selected_categories
                 })
             },
@@ -112,7 +114,7 @@
 
                 this.loadEvents({
                     current: this.currentPage,
-                    limit: this.ammount,
+                    limit: this.amount,
                     categories: this.selected_categories
                 })
             },
@@ -121,7 +123,7 @@
 
                 this.loadEvents({
                     current: page,
-                    limit: this.ammount,
+                    limit: this.amount,
                     categories: this.selected_categories
                 })
             }
