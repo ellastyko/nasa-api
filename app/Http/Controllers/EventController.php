@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
-use App\Models\Category;
 use App\Models\EventCategory;
 
 class EventController extends Controller
@@ -18,9 +17,10 @@ class EventController extends Controller
     {
         if ($request->get('category')) {
 
-            $event_ids = EventCategory::where(['category_id' => $request->get('category')])->get('event_id');
+            $event_ids = EventCategory::whereIn('category_id', $request->get('category'))->get('event_id');
 
             $events = Event::whereIn('id', $event_ids);
+
             $count = $events->count();
             $events = $events->paginate($request->get('limit'));
         }

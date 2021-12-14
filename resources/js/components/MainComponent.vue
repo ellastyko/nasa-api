@@ -17,10 +17,10 @@
                 />
             </div>
 
-            <select class="form-select"
-                    @change="onSelect"
+            <select class="form-select mt-4"
+                    @change="changeAmmount"
                     aria-label="Default select example"
-                    v-model="select">
+                    v-model="ammount">
                 <option selected disabled>Choose ammount of events</option>
                 <option value="5">5</option>
                 <option value="10">10</option>
@@ -52,7 +52,7 @@
             @change="pagination"
             class="d-flex"
             v-model="currentPage"
-            :per-page="select"
+            :per-page="ammount"
             :total-rows="getEventsCount"
             prev-text="Prev"
             next-text="Next"
@@ -76,7 +76,7 @@
 
             this.loadEvents({
                 current: this.currentPage,
-                limit: this.select
+                limit: this.ammount
             })
         },
         filters: {
@@ -90,7 +90,7 @@
         data() {
             return {
                 currentPage: 1,
-                select: 10,
+                ammount: 10,
                 selected_categories: null,
             }
         },
@@ -99,26 +99,29 @@
 
             ...mapActions(['loadCategories', 'loadEvents']),
 
-            onSelect() {
+            changeAmmount() {
 
                 this.loadEvents({
                     current: this.currentPage,
-                    limit: this.select,
+                    limit: this.ammount,
                     categories: this.selected_categories
                 })
-
             },
+
             selectCategory() {
+
                 this.loadEvents({
                     current: this.currentPage,
-                    limit: this.select,
+                    limit: this.ammount,
                     categories: this.selected_categories
                 })
             },
+
             pagination(page) {
+
                 this.loadEvents({
                     current: page,
-                    limit: this.select,
+                    limit: this.ammount,
                     categories: this.selected_categories
                 })
             }
@@ -133,6 +136,5 @@
 <style scoped lang="scss">
     .form-select {
         width: 255px;
-        margin-top: 20px;
     }
 </style>
