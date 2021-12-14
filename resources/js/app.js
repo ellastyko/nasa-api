@@ -19,13 +19,15 @@ import Vue from "vue";
  * Eg. ./components/MainComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('main-component', require('./components/MainComponent.vue').default);
+// Vue.component('main-component', require('./components/MainComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+import MainComponent from "./components/MainComponent";
 
 import store from './store/index'
 import { BootstrapVue } from 'bootstrap-vue'
@@ -34,5 +36,8 @@ Vue.use(BootstrapVue)
 
 const app = new Vue({
     el: '#app',
-    store
+    store,
+    components: {
+        'main-component' : MainComponent
+    }
 });
