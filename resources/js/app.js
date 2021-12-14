@@ -37,7 +37,7 @@ Vue.use(BootstrapVue)
 const app = new Vue({
     el: '#app',
     store,
-    components: {
-        'main-component' : MainComponent
-    }
+    // components: {
+    //     'main-component' : MainComponent
+    // }
 });
