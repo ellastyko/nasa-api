@@ -41,12 +41,12 @@ export default new Vuex.Store({
             if (payload.categories)
                 for (let c of payload.categories)
                     categories += `&category[]=${c.id}`
-            console.log(categories)
+
             const result = await fetch(`/api/events?limit=${payload.limit}&page=${payload.current}` + categories)
             const response = await result.json()
-            console.log(response)
-            // commit('SET_EVENTS', response.events.data)
-            // commit('SET_EVENTS_COUNT', response.count)
+
+            commit('SET_EVENTS', response.events.data)
+            commit('SET_EVENTS_COUNT', response.count)
         },
 
         async loadCategories({ commit }) {
