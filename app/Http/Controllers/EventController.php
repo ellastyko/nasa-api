@@ -18,7 +18,7 @@ class EventController extends Controller
     {
         if ($request->get('category')) {
 
-            $event_ids = EventCategory::where(['category_id' => 12])->get('event_id');
+            $event_ids = EventCategory::where(['category_id' => $request->get('category')])->get('event_id');
 
             $events = Event::whereIn('id', $event_ids);
             $count = $events->count();
