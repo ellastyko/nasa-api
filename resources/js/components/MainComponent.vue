@@ -39,7 +39,7 @@
             <tbody>
                 <tr v-for="event in getEvents" :key="event.id">
                     <th scope="row">{{ event.title }}</th>
-                    <td>{{ new Date(event.date).toLocaleDateString('en-GB') }}</td>
+                    <td>{{ event.date | parseDate }}</td>
                     <td>
                         <a target="_blank"
                            :href="'https://www.google.com/maps/search/?api=1&query=' + event.lat + ',' + event.lng">Go by link</a>
@@ -50,7 +50,7 @@
         </table>
         <b-pagination
             @change="pagination"
-            class="mt-4"
+            class="d-flex"
             v-model="currentPage"
             :per-page="select"
             :total-rows="getEventsCount"
@@ -78,6 +78,11 @@
                 current: this.currentPage,
                 limit: this.select
             })
+        },
+        filters: {
+            parseDate: time => {
+                return new Date(time).toLocaleDateString('en-GB')
+            }
         },
         computed: {
             ...mapGetters(['getEvents', 'getCategories', 'getEventsCount']),
