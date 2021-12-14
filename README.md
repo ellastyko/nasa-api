@@ -3,5 +3,4 @@
     php artisan migrate 
     php artisan serve
     npm run watch
-    php artisan schedule run
-    php artisan schedule work
+    php artisan schedule:work
