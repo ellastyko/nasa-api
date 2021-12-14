@@ -1,3 +1,5 @@
-1. Composer install
-2. npm install
-3. php artisan migrate
+    composer install
+    npm install
+    php artisan migrate 
+    php artisan serve
+    npm run watch

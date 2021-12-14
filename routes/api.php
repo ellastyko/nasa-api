@@ -1,10 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    AuthController,
-    CompanyController
+    CategoryController,
+    EventController
 };
+
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,18 +18,5 @@ use App\Http\Controllers\{
 |
 */
 
-Route::group([
-    'prefix' => 'auth'
-], function() {
-    Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-});
-
-Route::group([
-    'middleware' => 'auth:sanctum',
-    'prefix' => 'companies'
-], function() {
-    Route::get('/', [CompanyController::class, 'index']);
-    Route::post('/', [CompanyController::class, 'store']);
-});
+Route::get('/events', [EventController::class, 'index']);
+Route::get('/categories', [CategoryController::class, 'index']);

@@ -4,16 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
-        <!-- Icons -->
-        <script src="https://kit.fontawesome.com/38f77a82c9.js" crossorigin="anonymous"></script>
+        <title>Nasa API</title>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="app">
-            <example-component></example-component>
+            <main-component></main-component>
         </div>
-        <script src="{{ asset('js/app.js') }}"></script> 
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
