@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Nasa API</title>
-
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/vnd.microsoft.icon">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
