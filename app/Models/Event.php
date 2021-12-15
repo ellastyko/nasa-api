@@ -15,7 +15,7 @@ class Event extends Model
         'code',
         'title',
         'date',
-        'lng',
+        'long',
         'lat',
     ];
 }

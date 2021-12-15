@@ -18,8 +18,8 @@ class CreateEventsTable extends Migration
             $table->string('code')->unique();
             $table->string('title');
             $table->dateTime('date');
-            $table->string('lng'); //0
-            $table->string('lat'); //1
+            $table->string('long');
+            $table->string('lat');
         });
     }
 
