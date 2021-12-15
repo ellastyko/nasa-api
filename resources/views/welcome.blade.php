@@ -10,7 +10,7 @@
     </head>
     <body>
         <div id="app">
-            <MainComponent></MainComponent>
+            <main-component></main-component>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
