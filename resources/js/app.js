@@ -35,9 +35,10 @@ import { BootstrapVue } from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 
 const app = new Vue({
+    name: 'MainComponent',
     el: '#app',
     store,
     components: {
-        'main-component' : MainComponent
+        'MainComponent' : MainComponent
     }
 });
