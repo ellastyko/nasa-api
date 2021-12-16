@@ -89,7 +89,6 @@
         },
         data() {
             return {
-                show: true,
                 currentPage: 1,
                 amount: 10,
                 selected_categories: null,
