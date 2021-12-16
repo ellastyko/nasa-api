@@ -44,17 +44,18 @@
                     </td>
                 </tr>
             </tbody>
-
         </table>
-        <b-pagination
-            @change="pagination"
-            class="d-flex"
-            v-model="currentPage"
-            :per-page="amount"
-            :total-rows="getEventsCount"
-            prev-text="Prev"
-            next-text="Next"
-        ></b-pagination>
+        <div class="w-100 d-flex align-items-center justify-content-center">
+            <b-pagination
+                class="my-3"
+                @change="pagination"
+                v-model="currentPage"
+                :per-page="amount"
+                :total-rows="getEventsCount"
+                prev-text="Prev"
+                next-text="Next"
+            ></b-pagination>
+        </div>
     </div>
 </template>
 
