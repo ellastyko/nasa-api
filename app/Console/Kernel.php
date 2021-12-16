@@ -2,7 +2,8 @@
 
 namespace App\Console;
 
-use App\Jobs\UpdateEventsList;
+use App\Jobs\UpdateCategories;
+use App\Jobs\UpdateEvents;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -27,7 +28,8 @@ class  Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new UpdateEventsList)->everyMinute();
+        $schedule->job(new UpdateCategories)->everyMinute();
+        $schedule->job(new UpdateEvents)->everyMinute();
     }
 
     /**

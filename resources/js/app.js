@@ -19,8 +19,6 @@ import Vue from "vue";
  * Eg. ./components/MainComponent.vue -> <example-component></example-component>
  */
 
-// Vue.component('main-component', require('./components/MainComponent.vue').default);
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

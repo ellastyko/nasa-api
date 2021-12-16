@@ -27,7 +27,6 @@
                 <option value="20">20</option>
             </select>
         </div>
-
         <table class="table">
             <thead>
                 <tr>
@@ -56,7 +55,6 @@
             prev-text="Prev"
             next-text="Next"
         ></b-pagination>
-
     </div>
 </template>
 
@@ -91,6 +89,7 @@
         },
         data() {
             return {
+                show: true,
                 currentPage: 1,
                 amount: 10,
                 selected_categories: null,
@@ -111,7 +110,6 @@
             },
 
             selectCategory() {
-
                 this.loadEvents({
                     current: this.currentPage,
                     limit: this.amount,
@@ -135,7 +133,7 @@
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 
-<style scoped lang="scss">
+<style scoped lang="css">
     .form-select {
         width: 255px;
     }
