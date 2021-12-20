@@ -15,18 +15,19 @@ class EventController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->get('category')) {
+        $limit = $request->input('limit');
 
-            $event_ids = EventCategory::whereIn('category_id', $request->get('category'))->get('event_id');
+        if ($request->has('category')) {
 
+            $event_ids = EventCategory::whereIn('category_id', $request->input('category'))->get('event_id');
             $events = Event::whereIn('id', $event_ids);
 
             $count = $events->count();
-            $events = $events->paginate($request->get('limit'));
+            $events = $events->paginate($limit);
         }
         else {
-            $events = Event::paginate($request->get('limit'));
             $count = Event::count();
+            $events = Event::paginate($limit);
         }
         return response([
             'events' => $events,
